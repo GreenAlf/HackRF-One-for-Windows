@@ -127,9 +127,7 @@ def jam(freq, waveform, power, delay=1):
 
     freq_mod = analog.frequency_modulator_fc(1)
     if platform.system() == "Windows":
-        osmosdr_sink = osmosdr.sink(
-            args="hackrf one"
-        )
+        osmosdr_sink = osmosdr.sink("hackrf=0")
         print("Detected Windows OS")
     else:
         osmosdr_sink = osmosdr.sink(
