@@ -92,8 +92,120 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       UUUUUUUU
       ```
 ## WSL Setup
+1. Install Prerequisites:
+   - Install [Git](https://git-scm.com/downloads) and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+   - Install usbipd-win (.msi) from its [GitHub releases](https://github.com/dorssel/usbipd-win/releases).
+2. Connect and Verify HackRF One
+   - Plug in your HackRF One with a micro USB cable.
+   - Open the Device Manager to check if your PC recognizes the device.
+   - If not, run [Zadig](https://zadig.akeo.ie/), select List All Devices, choose HackRF One, and click Downgrade WCID Driver.
 
+3. Clone the Repository
+   Open a Command Prompt and run:
+   ```
+   git clone https://github.com/whiteSHADOW1234/HackRF-One-for-Windows.git
+   ```
+   This will download the files `jamRF_v1.py` and `config_v1.yaml`.
+4. Install Linux Dependencies in WSL:
+   - Open PowerShell and list your WSL distributions
+      ```
+      wsl --list --verbose
+      ```
+   - Launch your chosen Linux distribution:
+      ```
+      wsl -d <YOUR_LINUX_DISTRIBUTION>
+      ```
+   - Install the necessary packages
+      ```
+      sudo apt-get install gqrx gnuradio gr-osmosdr hackrf libhackrf-dev gnuradio-dev gr-iqbal gqrx-sdr
+      ```
+   - Verify HackRF detection (It might not detect the device like the following output):
+      ```
+      > lsusb
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+      ```
+5. Bind the HackRF USB Port to WSL:
+   - In a new PowerShell window, list connected USB devices:
+      ```
+      > usbipd list
+      Connected:
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-1    1d50:6089  HackRF One                                                    Not shared
+      2-3    30c9:000e  HP Wide Vision HD Camera                                      Not shared
+      2-10   8087:0026  Intel(R) Wireless Bluetooth(R)                                Not shared
 
+      Persisted:
+      GUID                                  DEVICE
+    
+      ```
+   - Bind and attach HackRF (replace <BUSID> with your HackRF’s bus ID):
+      ```
+      > usbipd bind --busid 2-1
+      > usbipd list
+      Connected:
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-1    1d50:6089  HackRF One                                                    Shared
+      2-3    30c9:000e  HP Wide Vision HD Camera                                      Not shared
+      2-10   8087:0026  Intel(R) Wireless Bluetooth(R)                                Not shared
+
+      Persisted:
+      GUID                                  DEVICE
+      
+      
+      > usbipd attach --wsl --busid 2-1
+      > usbipd list
+      Connected:
+      BUSID  VID:PID    DEVICE                                                        STATE
+      2-1    1d50:6089  HackRF One                                                    Attached
+      2-3    30c9:000e  HP Wide Vision HD Camera                                      Not shared
+      2-10   8087:0026  Intel(R) Wireless Bluetooth(R)                                Not shared
+
+      Persisted:
+      GUID                                  DEVICE
+      ```
+   - Confirm the attachment by rechecking in the old window with:
+      ```
+      > lsusb
+      Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+      Bus 001 Device 002: ID 1d50:6089 OpenMoko, Inc. Great Scott Gadgets HackRF One SDR
+      Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+      ```
+6. Test and Run
+   - In WSL, run the following command to ensure HackRF is recognized.
+      ```
+      > hackrf_info
+      hackrf_info version: unknown
+      libhackrf version: unknown (0.5)
+      Found HackRF
+      Index: 0
+      Serial number: 0000000000000000a18c63dc2b3c6813
+      Board ID Number: 2 (HackRF One)
+      Firmware Version: v2.0.1 (API:1.08)
+      Part ID Number: 0xa000cb3c 0x00614766
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      Operacake found, address: 0xff
+      ```
+   - Navigate to the cloned repository and execute the script
+      ```
+      > python3 jamRF_v1.py
+      1 100
+      JAM!
+
+      The frequency currently jammed is: 2412.0MHz
+      gr-osmosdr 0.2.0.0 (0.2.0) gnuradio 3.8.1.0
+      built-in sink types: uhd hackrf bladerf soapy redpitaya freesrp file
+      [INFO] [UHD] linux; GNU C++ version 9.2.1 20200304; Boost_107100; UHD_3.15.0.0-2build5
+      Using HackRF One with firmware v2.0.1
+      100
+      UUUUUUUUUUUUUUU
+      ```
 
 ## Docker Setup
 
