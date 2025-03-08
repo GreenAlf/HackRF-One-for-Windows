@@ -212,19 +212,44 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 
 
 ## Troubleshooting
-1. Device not found, but sill get the following issue:
-   ```
-   Exception has occurred: RuntimeError
-   Failed to use '0' as HackRF device index: not enough devices
-   File "C:\Users\<USER_NAME>\Desktop\HackRF-One-for-Windows\jamRF_v1.py", line 130, in jam
-      osmosdr_sink = osmosdr.sink("hackrf=0")
-                     ^^^^^^^^^^^^^^^^^^^^^^^^
-   File "C:\Users\<USER_NAME>\Desktop\HackRF-One-for-Windows\jamRF_v1.py", line 271, in <module>
-      jam(freq, waveform, power, t_jamming)
-   RuntimeError: Failed to use '0' as HackRF device index: not enough devices
-   ```
-   - Switch a different USB port
-2. After running `usbipd list` but found the HackRF has been detected as `USBIP Shared Device`, instead of `HackRF One`.
-   - Update the USB driver
-   - Unplug and replug HackRF
-   - Switch a different USB port
+1. Device Not Found
+   - Error:
+      ```
+      Exception has occurred: RuntimeError
+      Failed to use '0' as HackRF device index: not enough devices
+      File "C:\Users\<USER_NAME>\Desktop\HackRF-One-for-Windows\jamRF_v1.py", line 130, in jam
+         osmosdr_sink = osmosdr.sink("hackrf=0")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+      File "C:\Users\<USER_NAME>\Desktop\HackRF-One-for-Windows\jamRF_v1.py", line 271, in <module>
+         jam(freq, waveform, power, t_jamming)
+      RuntimeError: Failed to use '0' as HackRF device index: not enough devices
+      ```
+   - Solution:
+      Try switching to a different USB port.
+2. Device Misidentification
+   - Observation
+      When running `usbipd list`, HackRF appears as a `USBIP Shared Device` (and similarly in **Device Manager**) instead of `HackRF One`.
+   - Solution
+      Update the USB driver, unplug and replug the HackRF, or use a different USB port.
+
+3. DLL or Access Denied Errors
+   - Error
+      ```
+      python jamRF_v1.py
+      Traceback (most recent call last):
+      File "C:\Users\<USER_NAME>\miniconda3\envs\hackrf_env\Lib\site-packages\gnuradio\blocks\__init__.py", line 18, in <module>
+         from .blocks_python import *
+      ImportError: DLL load failed while importing blocks_python: 找不到指定的模組。
+
+      During handling of the above exception, another exception occurred:
+
+      Traceback (most recent call last):
+      File "C:\Users\<USER_NAME>\Desktop\WiFi-Jamming\jamRF_v1.py", line 19, in <module>
+         from gnuradio import blocks
+      File "C:\Users\<USER_NAME>\miniconda3\envs\hackrf_env\Lib\site-packages\gnuradio\blocks\__init__.py", line 22, in <module>
+         from .blocks_python import *
+      ImportError: DLL load failed while importing blocks_python: 找不到指定的模組。
+      ```
+      or an Access Denied error, even when running as Administrator.
+   - Solution
+      Remove or deactivate any conflicting conda environments to ensure only one is accessing the HackRF device.
