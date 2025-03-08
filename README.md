@@ -24,7 +24,6 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 ## Conda Setup
 1. Prepare Essentials:
    - Download and install [Git](https://git-scm.com/downloads) and [Miniconda](https://www.anaconda.com/download/success) (or Anaconda).
-   - Install usbipd-win (.msi) from its [GitHub releases](https://github.com/dorssel/usbipd-win/releases).
 3. Connect and Verify HackRF One
    - Plug in your HackRF One with a micro USB cable.
    - Open the Device Manager to check if your PC recognizes the device.
