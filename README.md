@@ -220,7 +220,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       RuntimeError: Failed to use '0' as HackRF device index: not enough devices
       ```
    - Solution:
-      Try switching to a different USB port.
+      Try switching to a different USB port or update the USB driver.
 2. Device Misidentification
    - Observation
       When running `usbipd list`, HackRF appears as a `USBIP Shared Device` (and similarly in **Device Manager**) instead of `HackRF One`.
