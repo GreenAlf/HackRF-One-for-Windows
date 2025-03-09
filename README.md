@@ -173,37 +173,33 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 6. Test and Run
    - In WSL, run the following command to ensure HackRF is recognized.
       ```
-      > hackrf_info
+      $ hackrf_info
       hackrf_info version: unknown
-      libhackrf version: unknown (0.5)
+      libhackrf version: unknown (0.6)
       Found HackRF
       Index: 0
       Serial number: 0000000000000000a18c63dc2b3c6813
       Board ID Number: 2 (HackRF One)
       Firmware Version: v2.0.1 (API:1.08)
       Part ID Number: 0xa000cb3c 0x00614766
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
-      Operacake found, address: 0xff
       ```
    - Navigate to the cloned repository and execute the script
       ```
-      > python3 jamRF_v1.py
+      $ python3 jamRF_v1.py
       1 100
       JAM!
 
       The frequency currently jammed is: 2412.0MHz
-      gr-osmosdr 0.2.0.0 (0.2.0) gnuradio 3.8.1.0
+      gr-osmosdr 0.2.0.0 (0.2.0) gnuradio 3.10.1.1
       built-in sink types: uhd hackrf bladerf soapy redpitaya freesrp file
-      [INFO] [UHD] linux; GNU C++ version 9.2.1 20200304; Boost_107100; UHD_3.15.0.0-2build5
+      [INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+      libusb: warning [libusb_exit] device 2.1 still referenced
+      libusb: warning [libusb_exit] device 1.2 still referenced
+      libusb: warning [libusb_exit] device 1.1 still referenced
       Using HackRF One with firmware v2.0.1
+      Detected Linux OS
       100
-      UUUUUUUUUUUUUUU
+      UUUUUUUUUU
       ```
 
 ## Docker Setup
@@ -231,7 +227,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
    - Solution
       Update the USB driver, unplug and replug the HackRF, or use a different USB port.
 
-3. DLL or Access Denied Errors
+3. DLL Errors
    - Error
       ```
       python jamRF_v1.py
@@ -249,6 +245,40 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
          from .blocks_python import *
       ImportError: DLL load failed while importing blocks_python: 找不到指定的模組。
       ```
-      or an Access Denied error, even when running as Administrator.
    - Solution
-      Remove or deactivate any conflicting conda environments to ensure only one is accessing the HackRF device.
+      Remove any conflicting conda environments or WSL distrobutions to ensure only one is accessing the HackRF device.
+
+4. Access Denied error, even when running as Administrator.
+   - Error
+      ```
+      $ hackrf_info
+      hackrf_info version: unknown
+      libhackrf version: unknown (0.6)
+      Found HackRF
+      Index: 0
+      hackrf_open() failed: Access denied (insufficient permissions) (-1000)
+      ```
+   - Solution
+      Remove any conflicting conda environments or WSL distrobutions to ensure only one is accessing the HackRF device.
+5. `avahi_service_browser_new()` Failed
+   - Error
+      ```
+      python3 jamRF_v1.py
+      1 100
+      JAM!
+
+      The frequency currently jammed is: 2412.0MHz
+      gr-osmosdr 0.2.0.0 (0.2.0) gnuradio 3.10.1.1
+      built-in sink types: uhd hackrf bladerf soapy redpitaya freesrp file
+      [INFO] [UHD] linux; GNU C++ version 11.2.0; Boost_107400; UHD_4.1.0.5-3
+      [ERROR] avahi_service_browser_new() failed: Bad state
+      libusb: warning [libusb_exit] device 2.1 still referenced
+      libusb: warning [libusb_exit] device 1.2 still referenced
+      libusb: warning [libusb_exit] device 1.1 still referenced
+      Using HackRF One with firmware v2.0.1
+      100
+      vmcircbuf_prefs::get :error: /home/huang/.gnuradio/prefs/vmcircbuf_default_factory: No such file or directory
+      gr::vmcircbuf :error: vmcircbuf_createfilemapping: createfilemapping is not available
+      ```
+   - Solution
+      Install `avahi-daemon` by executing `sudo apt install avahi-daemon -y` in the WSL distrobution will fix.
