@@ -116,7 +116,8 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       ```
    - Install the necessary packages
       ```
-      sudo apt-get install gqrx gnuradio gr-osmosdr hackrf libhackrf-dev gnuradio-dev gr-iqbal gqrx-sdr
+      sudo apt update
+      sudo apt install gnuradio gr-osmosdr hackrf -y
       ```
    - Verify HackRF detection (It might not detect the device like the following output):
       ```
@@ -277,7 +278,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       libusb: warning [libusb_exit] device 1.1 still referenced
       Using HackRF One with firmware v2.0.1
       100
-      vmcircbuf_prefs::get :error: /home/huang/.gnuradio/prefs/vmcircbuf_default_factory: No such file or directory
+      vmcircbuf_prefs::get :error: /home/<USER_NAME>/.gnuradio/prefs/vmcircbuf_default_factory: No such file or directory
       gr::vmcircbuf :error: vmcircbuf_createfilemapping: createfilemapping is not available
       ```
    - Solution
