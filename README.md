@@ -92,7 +92,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       ```
 ## WSL Setup
 1. Install Prerequisites:
-   - Install [Git](https://git-scm.com/downloads) and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+   - Install [Git](https://git-scm.com/downloads) and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) with a Linux distrobution (take Ubuntu for example).
    - Install usbipd-win (.msi) from its [GitHub releases](https://github.com/dorssel/usbipd-win/releases).
 2. Connect and Verify HackRF One
    - Plug in your HackRF One with a micro USB cable.
