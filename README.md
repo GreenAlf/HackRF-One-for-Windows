@@ -18,7 +18,6 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 ## Contents
 - **[Conda Setup](#conda-setup)**
 - **[WSL Setup](#wsl-setup)**
-- **[Docker Setup](#docker-setup)**
 - **[Troubleshooting](#troubleshooting)**
 
 ## Conda Setup
@@ -202,10 +201,6 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       100
       UUUUUUUUUU
       ```
-
-## Docker Setup
-
-
 
 ## Troubleshooting
 1. Device Not Found
