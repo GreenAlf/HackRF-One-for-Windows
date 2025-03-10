@@ -283,11 +283,3 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       ```
    - Solution
       Install `avahi-daemon` by executing `sudo apt install avahi-daemon -y` in the WSL distrobution will fix.
-6. Stuck at `# usbip attach -r host.docker.internal -b 2-1`
-- Error:
-   ```
-   # usbip attach -r host.docker.internal -b 2-1
-
-   ```
-- Solution
-   Press `Ctrl+C`, exit the docker container, and restart your PC without HackRF One attached.
