@@ -46,7 +46,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
    Open the cloned repository in Visual Studio Code (or your preferred editor). If you notice unresolved packages, 
    Continue with these commands in the Command Prompt:
    ```
-   conda create -n hackrf_env -c conda-forge gnuradio gr-osmosdr hackrf
+   conda create -n hackrf_env -c conda-forge gnuradio gnuradio-osmosdr hackrf -y
    conda activate hackrf_env
    ```
    ![vScode-screenshot](images/5-1.png)
