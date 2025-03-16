@@ -23,7 +23,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 ## Conda Setup
 1. Prepare Essentials:
    - Download and install [Git](https://git-scm.com/downloads) and [Miniconda](https://www.anaconda.com/download/success) (or Anaconda).
-3. Connect and Verify HackRF One
+2. Connect and Verify HackRF One
    - Plug in your HackRF One with a micro USB cable.
    - Open the Device Manager to check if your PC recognizes the device.
    - If not recognized properly, download and run [Zadig](https://zadig.akeo.ie/):
@@ -36,24 +36,32 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       - Confirm in Device Manager that the HackRF One now appears correctly.
          ![zadig-screenshot-4](images/3-4.png)
 
-4. Clone the Repository
+3. Clone the Repository
    Open a Command Prompt and run:
    ```
    git clone https://github.com/whiteSHADOW1234/HackRF-One-for-Windows.git
    ```
    This will download the files `jamRF_v1.py` and `config_v1.yaml`.
-5. Set Up the Python Environment
-   Open the cloned repository in Visual Studio Code (or your preferred editor). If you notice unresolved packages, 
-   Continue with these commands in the Command Prompt:
-   ```
-   conda create -n hackrf_env -c conda-forge gnuradio gnuradio-osmosdr hackrf -y
-   conda activate hackrf_env
-   ```
-   ![vScode-screenshot](images/5-1.png)
-   Then, in VSCode, change the Python interpreter to `hackrf_env` and restart the terminal 
-   ![vScode-screenshot](images/5-2.png)
-      - This may require restarting twice to resolve all issues.
-         ![vScode-screenshot](images/5-3.png)
+4. Set Up the Python Environment
+   - Launch Visual Studio Code (or your preferred editor) and open the cloned repository. 
+   - If you see unresolved package errors (e.g., as shown below), proceed with the following steps:
+   ![vScode-screenshot](images/4-1.png)
+
+   - Open a Command Prompt (by) and run:
+      ```
+      conda create -n hackrf_env -c conda-forge gnuradio gnuradio-osmosdr hackrf -y
+      conda activate hackrf_env
+      ```
+   - Then, in VSCode, change the Python interpreter to `hackrf_env`:
+      - Click on the status bar section that shows the current interpreter and select the one called `hackrf_env`.
+      ![vScode-screenshot](images/4-2.png)
+      - Alternatively, open the Command Palette (`Ctrl + Shift + P` on Windows/Linux or `Cmd + Shift + P` on macOS) and type `Python: Select Interpreter` to choose `hackrf_env`.
+   - And restart the terminal, the error message (`import XXX could not be found`) should now be resolved.
+      ![vScode-screenshot](images/4-3.png)
+
+> [!TIP]
+> You might need to restart VS Code twice to clear all issues.
+> ![vScode-screenshot](images/4-4.png)
   
 
 6. Verify and Run
