@@ -64,7 +64,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 > ![vScode-screenshot](images/4-4.png)
   
 
-6. Verify and Run
+5. Verify and Run
    - In the terminal, run the following command to ensure HackRF One details are displayed.
       ```
       > hackrf_info
