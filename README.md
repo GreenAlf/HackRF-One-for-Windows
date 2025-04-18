@@ -60,7 +60,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       ![vScode-screenshot](images/4-3.png)
 
 > [!TIP]
-> You might need to restart VS Code twice to clear all issues.
+> You might need to restart VS Code terminal twice to clear all issues.
 > ![vScode-screenshot](images/4-4.png)
   
 
