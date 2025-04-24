@@ -1,6 +1,11 @@
 # HackRF One for Windows
 A comprehensive tutorial for setting up and using HackRF One on Windows. This repository provides detailed step-by-step instructions, code samples, and troubleshooting tips—filling the gap left by Linux-focused guides. It also integrates modified code from [jamRF_v1.py](https://github.com/tiiuae/jamrf/blob/master/HackRF/jamRF_v1.py)
 
+> [!CAUTION]
+> ### Disclaimer
+> This repository is provided **for educational purposes only**. Transmitting signals on any frequency band without proper authorization is **strictly prohibited** in most circumstance. The author is not responsible for any misuse of the code. Use it at your own risk, and always comply with all local, national, and international laws and regulations.
+
+
 ## Overview
 HackRF One is a popular, low-cost, open-source software-defined radio (SDR) platform. While many setup guides assume a Linux environment, this project is tailored for Windows users. Whether you prefer using Conda, WSL, or Docker, this guide covers various methods to get you started.
 
