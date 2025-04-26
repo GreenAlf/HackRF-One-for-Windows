@@ -3,7 +3,7 @@ A comprehensive tutorial for setting up and using HackRF One on Windows. This re
 
 > [!CAUTION]
 > ### Disclaimer
-> This repository is provided **for educational purposes only**. Transmitting signals on any frequency band without proper authorization is **strictly prohibited** in most circumstance. The author is not responsible for any misuse of the code. Use it at your own risk, and always comply with all local, national, and international laws and regulations.
+> This repository is provided for **educational purposes only**. **Unauthorized transmission of signals on any frequency band is strictly prohibited.** The code is distributed **"as is," without any warranties**, including but not limited to warranties of merchantability, fitness for a particular purpose, or noninfringement. The authors and contributors shall not be held liable for any damages or legal issues arising from the use or misuse of this code. Use it at your own risk, and ensure compliance with all **applicable laws and regulations**. By using or distributing this software, you acknowledge that you have read and understood this disclaimer.
 
 
 ## Overview
