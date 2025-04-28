@@ -26,6 +26,8 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
   To update or verify your firmware, see the official instructions at [Updating Firmware](https://hackrf.readthedocs.io/en/latest/updating_firmware.html)
 > - **Mayhem (PortaPack) firmware** uses semantic versioning in the *vX.X.X* format (e.g., *v2.1.0*).  
   For details on Mayhem updates, see the [PortaPack Mayhem repository](https://github.com/portapack-mayhem/mayhem-firmware)
+>
+> Sometimes Mayhem (PortaPack) firmware might require using Zadig (as shown in the screenshots under the 2nd step in the conda setup section) to resolve “No HackRF boards found.” errors.
 
 ## Contents
 - **[Conda Setup](#conda-setup)**
