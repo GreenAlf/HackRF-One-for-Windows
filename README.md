@@ -31,6 +31,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 
 ## Contents
 - **[Conda Setup](#conda-setup)**
+- **[Radioconda Setup](#radioconda-setup)**
 - **[WSL Setup](#wsl-setup)**
 - **[Troubleshooting](#troubleshooting)**
 
@@ -111,6 +112,59 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       top_block_impl :debug: Using default scheduler "TPB"
       UUUUUUUU
       ```
+
+## Radioconda Setup
+1. Install Prerequisites:
+   - Install [Git](https://git-scm.com/downloads) and [Miniconda](https://www.anaconda.com/download/success) (or Anaconda).
+   - Install [Radioconda](https://github.com/ryanvolz/radioconda?tab=readme-ov-file#download). No special installation steps are needed beyond the defaults.
+
+2. Connect and Verify HackRF One
+   - Plug in your HackRF One with a micro USB cable.
+   - Open the Device Manager to check if your PC recognizes the device.
+   - If HackRF One is not recognized, run [Zadig](https://zadig.akeo.ie/), select List All Devices, choose HackRF One, and click Downgrade WCID Driver.
+
+3. Clone the Repository
+   Open a Command Prompt and run:
+   ```
+   git clone https://github.com/whiteSHADOW1234/HackRF-One-for-Windows.git
+   ```
+   This will download the project files, including `jamRF_v1.py` and `config_v1.yaml`.
+
+4. Verify and Run
+   - In the Radioconda prompt, run the following to verify that your HackRF One is correctly recognized:
+      ```
+      > hackrf_info
+      hackrf_info version: 2024.02.1
+      libhackrf version: 2024.02.1 (0.9)
+      Found HackRF
+      Index: 0
+      Serial number: 0000000000000000a18c63dc2b3c6813
+      Board ID Number: 2 (HackRF One)
+      Firmware Version: v2.0.1 (API:1.08)
+      Part ID Number: 0xa000cb3c 0x00614766
+      Hardware Revision: older than r6
+      Hardware supported by installed firmware:
+         HackRF One
+      ```
+
+   - Then, run the script:
+      ```
+      > cd HackRF-One-for-Windows
+      > python jamRF_v1.py
+      1 100
+      JAM!
+
+      The frequency currently jammed is: 2412.0MHz
+      gr-osmosdr 0.2.0.0 (0.2.0) gnuradio 3.10.12.0
+      built-in sink types: uhd hackrf bladerf soapy redpitaya file 
+      Using HackRF One with firmware v2.0.1
+      Detected Windows OS
+      100
+      pagesize :debug: Setting pagesize to 4096 B
+      top_block_impl :debug: Using default scheduler "TPB"
+      UUUUUUUU
+      ```
+
 ## WSL Setup
 1. Install Prerequisites:
    - Install [Git](https://git-scm.com/downloads) and [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) with a Linux distrobution (take Ubuntu for example).
