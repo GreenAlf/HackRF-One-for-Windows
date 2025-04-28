@@ -22,9 +22,9 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 
 > [!NOTE]
 > There are two popular firmware:
-> - **Stock HackRF One firmware** uses a date-based tag in the *YYYY.MM.DD* format (e.g., *2024.02.1*).  
+> - (Preferred) **Stock HackRF One firmware** uses a date-based tag in the *YYYY.MM.DD* format (e.g., *2024.02.1*).  
   To update or verify your firmware, see the official instructions at [Updating Firmware](https://hackrf.readthedocs.io/en/latest/updating_firmware.html)
-> - **Mayhem (PortaPack) firmware** uses semantic versioning in the *vX.X.X* format (e.g., *v2.1.0*).  
+> - (Most common preloaded) **Mayhem (PortaPack) firmware** uses semantic versioning in the *vX.X.X* format (e.g., *v2.1.0*).  
   For details on Mayhem updates, see the [PortaPack Mayhem repository](https://github.com/portapack-mayhem/mayhem-firmware)
 >
 > Sometimes Mayhem (PortaPack) firmware might require using Zadig (as shown in the screenshots under the 2nd step in the conda setup section) to resolve “No HackRF boards found.” errors.
