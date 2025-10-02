@@ -280,7 +280,7 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
 
 ## Troubleshooting
 1. Device Not Found
-   - Error:
+   - **Error:**
       ```
       Exception has occurred: RuntimeError
       Failed to use '0' as HackRF device index: not enough devices
@@ -291,16 +291,19 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
          jam(freq, waveform, power, t_jamming)
       RuntimeError: Failed to use '0' as HackRF device index: not enough devices
       ```
-   - Solution:
+   - **Solution:**
+   
       Try switching to a different USB port or update the USB driver.
 2. Device Misidentification
-   - Observation
+   - **Observation:**
+   
       When running `usbipd list`, HackRF appears as a `USBIP Shared Device` (and similarly in **Device Manager**) instead of `HackRF One`.
-   - Solution
+   - **Solution:**
+   
       Update the USB driver, unplug and replug the HackRF, or use a different USB port.
 
 3. DLL Errors
-   - Error
+   - **Error:**
       ```
       python jamRF_v1.py
       Traceback (most recent call last):
@@ -317,11 +320,12 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
          from .blocks_python import *
       ImportError: DLL load failed while importing blocks_python: 找不到指定的模組。
       ```
-   - Solution
+   - **Solution:**
+   
       Remove any conflicting conda environments or WSL distrobutions to ensure only one is accessing the HackRF device.
 
 4. Access Denied error, even when running as Administrator.
-   - Error
+   - **Error:**
       ```
       $ hackrf_info
       hackrf_info version: unknown
@@ -330,12 +334,14 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       Index: 0
       hackrf_open() failed: Access denied (insufficient permissions) (-1000)
       ```
-   - Solution 1
+   - **Solution 1:**
+   
       Remove any conflicting conda environments or WSL distrobutions to ensure only one is accessing the HackRF device.
-   - Solution 2
+   - **Solution 2:**
+   
       Try running `sudo hackrf_info`.
 5. `avahi_service_browser_new()` Failed
-   - Error
+   - **Error:**
       ```
       python3 jamRF_v1.py
       1 100
@@ -354,5 +360,6 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       vmcircbuf_prefs::get :error: /home/<USER_NAME>/.gnuradio/prefs/vmcircbuf_default_factory: No such file or directory
       gr::vmcircbuf :error: vmcircbuf_createfilemapping: createfilemapping is not available
       ```
-   - Solution
+   - **Solution:**
+   
       Install `avahi-daemon` by executing `sudo apt install avahi-daemon -y` in the WSL distrobution will fix.
