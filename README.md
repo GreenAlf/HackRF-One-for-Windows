@@ -330,8 +330,10 @@ HackRF One is a popular, low-cost, open-source software-defined radio (SDR) plat
       Index: 0
       hackrf_open() failed: Access denied (insufficient permissions) (-1000)
       ```
-   - Solution
+   - Solution 1
       Remove any conflicting conda environments or WSL distrobutions to ensure only one is accessing the HackRF device.
+   - Solution 2
+      Try running `sudo hackrf_info`.
 5. `avahi_service_browser_new()` Failed
    - Error
       ```
